@@ -1,0 +1,32 @@
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  aws_cdk:
+    runs_on: ubuntu_latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-region: eu-west-2
+    
+    - name: Install npm
+      run: 'sudo apt update -y && sudo apt install nodejs npm -y'
+
+    - name: Install AWS CDK
+      run: 'sudo npm install -g aws-cdk'
+
+    - name: Install Requirements
+      run: 'pip3 install -r requirements.txt'
+
+    - name: CDK Deploy 
+      run: cdk deploy

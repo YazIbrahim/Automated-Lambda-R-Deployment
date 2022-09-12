@@ -13,6 +13,6 @@
 #   Check Package:             'Cmd + Shift + E'
 #   Test Package:              'Cmd + Shift + T'
 
-hello <- function(a, b) {
-  return(a + b)
+hello <- function(a, b, c) {
+  return(a + b + c)
 }

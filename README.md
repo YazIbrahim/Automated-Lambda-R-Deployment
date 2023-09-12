@@ -1,4 +1,4 @@
-# Deploy R Code to AWS Lambda using Docker and GitHub Actions 
+# Automatically Deploy R scripts to AWS Lambda using Docker and GitHub Actions 
 
 
 ### Overview
